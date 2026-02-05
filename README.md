@@ -2,11 +2,11 @@
 
 [![Deploy](https://github.com/guennilena/info-site/actions/workflows/docker-compose.yml/badge.svg)](https://github.com/guennilena/info-site/actions/workflows/docker-compose.yml)
 
-**Version:** 1.0.0
+**Version:** 0.1.0
 
 A lightweight personal information platform running on a Linux VPS with automated deployment.
 
-## Features (v1.0.0)
+## Features (v0.1.0)
 - Linux VPS (Ubuntu)
 - Docker & Docker Compose
 - Reverse proxy with Caddy (HTTPS)
