@@ -1,32 +1,38 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <title>info.g-friedrich.com</title>
-  <link id="prism-theme" rel="stylesheet" href="/assets/prism.css">
-  <link rel="stylesheet" href="/assets/site.css">
-</head>
 <body>
-<div class="container">
-  <div class="topbar">
-    <div>
-      <strong>info.g-friedrich.com</strong>
-      <div style="color: var(--muted);">CV · Projekte · Doku</div>
-    </div>
-    <button id="theme-toggle" type="button">🌙 Dark</button>
+  <div class="container">
+    <header class="topbar">
+      <div class="brand">
+        <div class="title">Günther Friedrich</div>
+        <div class="subtitle">CV · Projekte · Doku</div>
+      </div>
+
+      <div class="actions">
+        <button id="theme-toggle" type="button">🌙 Dark</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Überblick</h2>
+        <p>
+          Mini-Plattform auf Linux VPS: Docker · Reverse Proxy (Caddy) · CI/CD (GitHub Actions).
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Snippet</h2>
+        <pre class="line-numbers"><code class="language-bash">
+          docker compose up -d docker compose ps
+          docker compose logs -f caddy
+        </code></pre>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> g-friedrich.com</span>
+    </footer>
   </div>
-  <div class="card">
-    <h2>Snippet</h2>
-    <pre class="line-numbers"><code class="language-bash">docker compose up -d docker compose ps</code></pre>
-  </div>
-</div>
-  <h1>info.g-friedrich.com</h1>
-  <p>CV · Projekte · Dokumentation</p>
-  <p>Linux VPS · Docker · Reverse Proxy</p>
-  <p>Deploy via GitHub Actions</p>
+
   <script defer src="/assets/prism.js"></script>
   <script defer src="/assets/site.js"></script>
 </body>
-</html>
-
-<!-- first deploy via GitHub Actions -->

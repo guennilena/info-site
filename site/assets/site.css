@@ -6,6 +6,7 @@
   --card: #f3f4f6;
   --border: #e5e7eb;
   --link: #2563eb;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
 
 :root[data-theme="dark"] {
@@ -15,9 +16,12 @@
   --card: #111827;
   --border: #273244;
   --link: #60a5fa;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
+* { box-sizing: border-box; }
 html, body { height: 100%; }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -26,42 +30,74 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 28px 18px;
-}
-
-a { color: var(--link); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px;
+  padding: 28px 18px 40px;
 }
 
 .topbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 16px;
   margin-bottom: 18px;
 }
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.actions { display: flex; gap: 10px; }
 
 button {
   appearance: none;
   border: 1px solid var(--border);
   background: transparent;
   color: var(--fg);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 8px 12px;
   cursor: pointer;
 }
-button:hover { background: color-mix(in srgb, var(--card), transparent 40%); }
+button:hover {
+  background: color-mix(in srgb, var(--card), transparent 40%);
+}
 
-/* Prism Feintuning */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 860px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 16px 14px;
+  box-shadow: var(--shadow);
+}
+
+.card h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.card p { margin: 0 0 10px; color: var(--fg); }
+.footer { margin-top: 18px; color: var(--muted); font-size: 13px; }
+
+/* Prism: optisch besser in Cards */
 pre {
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: auto;
+  margin: 0;
 }
