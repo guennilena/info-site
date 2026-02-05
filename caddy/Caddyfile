@@ -1,0 +1,4 @@
+info.g-friedrich.com {
+  root * /srv
+  file_server
+}
