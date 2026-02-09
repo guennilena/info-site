@@ -15,8 +15,9 @@ jobs:
           username: deploy
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            set -e
+            set -euo pipefail
             cd ~/webstack
             git pull
-            docker compose up -d
+
+            docker compose up -d --build --force-recreate
 
