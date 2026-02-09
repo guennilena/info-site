@@ -14,10 +14,15 @@ services:
       - apps
 
   apps:
-    image: ghcr.io/guennilena/info-apps:latest
+    build: ./apps
     restart: unless-stopped
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      PGHOST: applications-postgres
+      PGPORT: "5432"
+      PGUSER: app_user
+      PGPASSWORD: ${PGPASSWORD}
+      PGDATABASE: applications
+
       DOC_ROOT: /srv/applications/docs
       DB_PREFIX: /Volumes/applications
       VPS_PREFIX: /srv/applications/docs
@@ -25,7 +30,15 @@ services:
       - /srv/applications/docs:/srv/applications/docs:ro
     expose:
       - "3000"
+    networks:
+      - default
+      - applications_db
 
 volumes:
   caddy_data:
   caddy_config:
+
+networks:
+  applications_db:
+    external: true
+    name: applications-db_default
