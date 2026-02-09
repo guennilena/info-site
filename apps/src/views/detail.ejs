@@ -1,0 +1,72 @@
+<!-- apps/src/views/detail.ejs -->
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= appRow.company %></title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 24px; max-width: 1100px; }
+    a { color: inherit; }
+    .muted { color: #666; }
+    .card { border: 1px solid #ddd; padding: 16px; border-radius: 10px; margin: 16px 0; }
+    label { display:block; margin: 8px 0; }
+    input { width: min(700px, 100%); padding: 8px; }
+    button { padding: 8px 12px; cursor: pointer; }
+    ul { padding-left: 18px; }
+    li { margin: 6px 0; }
+    code { background: #f6f6f6; padding: 2px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <p><a href="/">← zurück</a></p>
+
+  <h1><%= appRow.company %></h1>
+
+  <div class="card">
+    <p><strong>Position:</strong> <%= appRow.position_title ?? "" %></p>
+    <p><strong>Beworben am:</strong> <%= appRow.applied_at ? new Date(appRow.applied_at).toISOString().slice(0,10) : "" %></p>
+    <p><strong>Ordner:</strong> <code><%= appRow.folder_path ?? "" %></code></p>
+  </div>
+
+  <div class="card">
+    <h2>Admin</h2>
+    <form method="post" action="/<%= appRow.application_id %>">
+      <label>Status:
+        <input name="status" value="<%= appRow.status ?? "" %>">
+      </label>
+
+      <label>Quelle:
+        <input name="application_source" value="<%= appRow.application_source ?? "" %>">
+      </label>
+
+      <label>Quelle Detail:
+        <input name="application_source_detail" value="<%= appRow.application_source_detail ?? "" %>">
+      </label>
+
+      <button type="submit">Speichern</button>
+      <span class="muted">Ändert nur status / source / source_detail in <code>applications</code>.</span>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Dokumente</h2>
+    <% if (!docs.length) { %>
+      <p class="muted">Keine Dokumente gefunden.</p>
+    <% } %>
+
+    <ul>
+      <% docs.forEach(d => { %>
+        <li>
+          <span class="muted">
+            <%= d.doc_date ? new Date(d.doc_date).toISOString().slice(0,10) : "" %>
+          </span>
+          <strong><%= d.doc_type %></strong>
+          <%= d.title ? " — " + d.title : "" %>
+          — <a href="/<%= appRow.application_id %>/docs/<%= d.document_id %>">öffnen</a>
+        </li>
+      <% }) %>
+    </ul>,
+  </div>
+</body>
+</html>

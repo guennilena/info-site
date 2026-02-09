@@ -2,7 +2,7 @@ info.g-friedrich.com {
 
   handle_path /apps* {
     basic_auth {
-      deploy $2a$14$Mg8q5teXIhbs9NRTuD6a1ukk8BJxtl6/dUZh72g8kpjI.HciBv5Ia
+      deploy $2a$14$yryvoc5rRbojpIdfHAuST.Ga3C9Rkjww.ffPnukIaDs55i7bJktP.
     }
     reverse_proxy apps:3000
   }
