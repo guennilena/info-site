@@ -1,4 +1,17 @@
 info.g-friedrich.com {
-  root * /srv
-  file_server
+
+  # Private Bewerbungs-App: zuerst matchen!
+  handle_path /apps* {
+    basicauth {
+      deploy $2a$14$Mg8q5teXIhbs9NRTuD6a1ukk8BJxtl6/dUZh72g8kpjI.HciBv5Ia
+    }
+
+    reverse_proxy apps:3000
+  }
+
+  # Public: statische Seite (Fallback für alles andere)
+  handle {
+    root * /srv
+    file_server
+  }
 }

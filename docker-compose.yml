@@ -10,6 +10,21 @@ services:
       - ./site:/srv:ro
       - caddy_data:/data
       - caddy_config:/config
+    depends_on:
+      - apps
+
+  apps:
+    image: ghcr.io/guennilena/info-apps:latest
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      DOC_ROOT: /srv/applications/docs
+      DB_PREFIX: /Volumes/applications
+      VPS_PREFIX: /srv/applications/docs
+    volumes:
+      - /srv/applications/docs:/srv/applications/docs:ro
+    expose:
+      - "3000"
 
 volumes:
   caddy_data:
