@@ -35,7 +35,7 @@
           <a href="/apps/<%= r.application_id %>"><%= r.company %></a>
         </td>
         <td><%= r.position_title ?? "" %></td>
-        <td><%= r.applied_at ? new Date(r.applied_at).toLocaleDateString('de-DE')).slice(0,10) : "" %></td>
+        <td><%= r.applied_at ? new Date(r.applied_at).toLocaleDateString('de-DE').slice(0,10) : "" %></td>
         <td><%= r.status ?? "" %></td>
         <td>
           <%= r.application_source ?? "" %>
