@@ -42,6 +42,8 @@ app.get("/", async (req, res) => {
       application_source,
       application_source_detail,
       last_doc_date,
+      last_doc_type,
+      last_doc_title,
       folder_path
     FROM public.v_applications_overview
     ORDER BY applied_at DESC
