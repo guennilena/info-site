@@ -31,7 +31,7 @@
     <% rows.forEach(r => { %>
       <tr>
         <td>
-          <a href="/<%= r.application_id %>"><%= r.company %></a>
+          <a href="/apps/<%= r.application_id %>"><%= r.company %></a>
         </td>
         <td><%= r.position_title ?? "" %></td>
         <td><%= r.applied_at ? new Date(r.applied_at).toISOString().slice(0,10) : "" %></td>

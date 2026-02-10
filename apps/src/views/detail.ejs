@@ -63,7 +63,7 @@
           </span>
           <strong><%= d.doc_type %></strong>
           <%= d.title ? " — " + d.title : "" %>
-          — <a href="/<%= appRow.application_id %>/docs/<%= d.document_id %>">öffnen</a>
+          — <a href="/apps/<%= appRow.application_id %>/docs/<%= d.document_id %>">öffnen</a>
         </li>
       <% }) %>
     </ul>,
