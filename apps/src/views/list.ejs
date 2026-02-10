@@ -26,6 +26,7 @@
       <th>Status</th>
       <th>Quelle</th>
       <th>Letztes Dokument</th>
+      <th>Letzter Typ/Titel</th>
     </tr>
 
     <% rows.forEach(r => { %>
@@ -34,7 +35,7 @@
           <a href="/apps/<%= r.application_id %>"><%= r.company %></a>
         </td>
         <td><%= r.position_title ?? "" %></td>
-        <td><%= r.applied_at ? new Date(r.applied_at).toISOString().slice(0,10) : "" %></td>
+        <td><%= r.applied_at ? new Date(r.applied_at).toLocaleDateString('de-DE')).slice(0,10) : "" %></td>
         <td><%= r.status ?? "" %></td>
         <td>
           <%= r.application_source ?? "" %>
@@ -42,7 +43,11 @@
             <span class="muted">(<%= r.application_source_detail %>)</span>
           <% } %>
         </td>
-        <td><%= r.last_doc_date ? new Date(r.last_doc_date).toISOString().slice(0,10) : "" %></td>
+        <td><%= r.last_doc_date ? new Date(r.last_doc_date).toLocaleDateString('de-DE').slice(0,10) : "" %></td>
+        <td>
+            <%= r.last_doc_type ?? "" %>
+            <%= r.last_doc_title ? " — " + r.last_doc_title : "" %>
+        </td>
       </tr>
     <% }) %>
   </table>
